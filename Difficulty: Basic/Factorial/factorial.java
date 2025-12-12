@@ -1,13 +1,13 @@
-// User function Template for Java
 class Solution {
-    public static int nFactorial(int n) {
-        int ans = 1;
-
-        // Write your code here
-        for(int i=n;i>0;i--){
-            ans=ans*i;
+    // Function to calculate factorial of a number.
+    int factorial(int n) {
+        // code here
+        int fact=1;
+        int i=1;
+        while(i<=n){
+            fact=fact*i;
+            i++;
         }
-
-        return ans;
+        return fact;
     }
 }
