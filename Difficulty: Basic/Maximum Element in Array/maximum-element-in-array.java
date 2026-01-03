@@ -1,9 +1,7 @@
-
 class Solution {
     public static int largest(int[] arr) {
         // code here
-        Arrays.sort(arr);
-        int n=arr.length-1;
-        return arr[n];
+        int max=Arrays.stream(arr).max().getAsInt();
+        return max;
     }
 }
