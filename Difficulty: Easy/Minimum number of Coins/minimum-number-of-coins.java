@@ -1,0 +1,15 @@
+class Solution {
+    public int findMin(int n) {
+        // code here
+        int[] coins={1,2,5,10};
+        int count=0;
+        for(int i=coins.length-1;i>=0;i--){
+            
+                count=count+(n/coins[i]);
+                n=n%coins[i];
+                if(n==0) break;
+            
+        }
+        return count;
+    }
+}
