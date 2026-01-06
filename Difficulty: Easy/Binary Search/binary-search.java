@@ -1,23 +1,23 @@
 class Solution {
     public int binarysearch(int[] arr, int k) {
         // Code Here
-    int res=-1;
-    int left=0;
-    int right=arr.length-1;
-    while(left<=right){
-        int mid=left+(right-left)/2;
-        if(arr[mid]==k){
-            res=mid;
-            right=mid-1;
-        }
-        else if(arr[mid]<k){
-            left=mid+1;
-        }
-        else{
-            right=mid-1;
-        }
+        return search(arr,k,0,arr.length-1);
     }
-    return res;
-
+    
+    public int search(int[] arr, int k, int low,int high ){
+        if(low>high){
+            return -1;
+        }
+        
+        int mid=low+(high-low)/2;
+        if(arr[mid]==k){
+            int left =search(arr, k,low,mid-1);
+            return left==-1? mid:left;
+        }
+        if(arr[mid]<k){
+            return search(arr,k,mid+1,high);
+        }
+        return search(arr,k,low,mid-1);
+        
     }
 }
