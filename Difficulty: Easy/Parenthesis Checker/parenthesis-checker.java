@@ -1,24 +1,32 @@
+import java.util.Stack;
 
 class Solution {
     static boolean isBalanced(String s) {
-        // code here
-        List<Character> openlist=Arrays.asList('(','[','{');
-        List<Character> closelist=Arrays.asList(')',']','}');
+        Stack<Character> st = new Stack<>();
         
-        Stack<Character> stack=new Stack<>();
-        
-        for(char ch:s.toCharArray()){
-            if(openlist.contains(ch)){
-                stack.push(ch);
+        for (char c : s.toCharArray()) {
+            
+           
+            if (c == '(' || c == '{' || c == '[') {
+                st.push(c);
             }
-            else if(closelist.contains(ch)){
-                if(stack.isEmpty()) return false;
-                char top=stack.pop();
-                if(openlist.indexOf(top)!=closelist.indexOf(ch)){
+            
+            else {
+                
+                if (st.isEmpty()) {
+                    return false;
+                }
+                
+                char top = st.pop();
+                
+            
+                if ((c == ')' && top != '(') ||
+                    (c == '}' && top != '{') ||
+                    (c == ']' && top != '[')) {
                     return false;
                 }
             }
         }
-        return stack.isEmpty();
+        return st.isEmpty();
     }
 }
